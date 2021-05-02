@@ -1,0 +1,53 @@
+﻿@model ConorHarringtonATM.ViewModels.HomeResultViewModel
+
+@{
+    ViewData["Title"] = "Result";
+}
+<h3>@Model.Header</h3>
+
+@if (Model.DispensedBillItems != null)
+{
+    <h5>Bills dispensed</h5>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Value</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var b in @Model.DispensedBillItems)
+            {
+                <tr>
+                    <td>@b.Value</td>
+                    <td>@b.Quantity</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+<h5>Remaining bills</h5>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Value</th>
+            <th scope="col">Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var b in @Model.RemainingBillItems)
+        {
+            <tr>
+                <td>@b.Value</td>
+                <td>@b.Quantity</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index" role="button">Main menu</a>
